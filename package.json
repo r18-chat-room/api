@@ -1,0 +1,26 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "The api layer of this app.",
+  "main": "app.js",
+  "scripts": {
+    "test": "node app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/r18-chat-room/api.git"
+  },
+  "keywords": [
+    "api"
+  ],
+  "author": "Guangdong Culture Helper Team",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/r18-chat-room/api/issues"
+  },
+  "homepage": "https://github.com/r18-chat-room/api#readme",
+  "dependencies": {
+    "express": "^4.16.2",
+    "mongoose": "^5.0.8"
+  }
+}
