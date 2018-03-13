@@ -4,7 +4,25 @@ The api layer of this app.
 
 Node + Express + MongoDB
 
-Test it out!
+# Test it out
+
+## Fill the blank
+
+Edit the files in `_configs/` with your own config and the api keys. 
+
+Then
+
+```
+mv _configs configs
+```
+
+## Install dependencies
+
+```
+npm install
+```
+
+## Run
 
 ```
 npm run test

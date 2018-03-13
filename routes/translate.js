@@ -1,11 +1,6 @@
 const fs = require('fs');
 const AipSpeech = require('baidu-aip-sdk').speech;
-const querystring = require('querystring');
 
-//设置语音识别appid/appkey/appsecret
-const APP_ID = 10898188
-const API_Key = '8cgonwEnwtnstdO2d4tPsjFX';
-const Secret_Key = 'e7e72505fb02f9a8c91d0a7b6f2c006d';
 //新建一个对象，建议只保存一个对象调用服务接口
 const client = new AipSpeech(APP_ID, API_Key, Secret_Key);
 
