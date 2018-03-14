@@ -1,6 +1,5 @@
 const aipApiInfo = require('../../../configs/baiduAiPlatform');
 const aipSpeech = require('baidu-aip-sdk').speech;
-const httpClient = require('baidu-aip-sdk').HttpClient;
 const baiduTranlateApiInfo = require('../../../configs/baiduTranslateApi');
 const multer = require('multer');
 const errors = require('../../../tools/errors');

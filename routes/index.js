@@ -1,6 +1,9 @@
 const init = function (app) {
-    app.post('/v1/app/language/translate', require('./app/language/translate').multer, require('./app/language/translate').handle);
-    // app.post('/v1/app/language/speech', require('./app/language/speech'));
+    app.post('/v1/app/language/translate', require('./app/language/translate').multer,
+                                           require('./app/language/translate').handle);
+    app.post('/v1/app/language/speech', require('./app/language/speech').bodyParserMiddleware,
+                                        require('./app/language/speech').normalHandle,
+                                        require('./app/language/speech').errorHandle);
 }
 
 module.exports = {
