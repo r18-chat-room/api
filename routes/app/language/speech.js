@@ -2,6 +2,7 @@ const aipApiInfo = require('../../../configs/baiduAiPlatform');
 const aipSpeech = require('baidu-aip-sdk').speech;
 const bodyParser = require('body-parser');
 const errors = require('../../../tools/errors');
+const logger = require('../../../tools/log4js');
 
 const aipClient = new aipSpeech(aipApiInfo.APP_ID, aipApiInfo.API_Key, aipApiInfo.Secret_Key);
 
@@ -10,9 +11,20 @@ const normalHandle = async function (req, res) {
         errors.badRequest(res, 'Speech text missing.');
         return;
     } else {
-        // TO-DO: Error handle is needed.
-        const result = await aipClient.text2audio(req.body.text);
-        res.set('Content-Type', 'audio/mpeg').send(result.data);
+        try {
+            logger.infoLogger.info('Send text2audio request: ', req.body.text);
+            const result = await aipClient.text2audio(req.body.text);
+            if (result.data) {
+                res.set('Content-Type', 'audio/mpeg').send(result.data);
+            } else {
+                errors.badRequest(res, 'Bad request to baidu api service.');
+                logger.warnLogger.warn('Bad request to baidu api service: ', result);
+            }
+        } catch (e) {
+            logger.warnLogger.warn('Can\'t connect to baidu api service: ', e);
+            errors.internalError(res, 'Can\'t connect to baidu api service.');
+        }
+
     }
 }
 
