@@ -1,6 +1,5 @@
 const aipApiInfo = require('../../../configs/baiduAiPlatform');
 const aipSpeech = require('baidu-aip-sdk').speech;
-const bodyParser = require('body-parser');
 const errors = require('../../../tools/errors');
 const logger = require('../../../tools/log4js');
 
@@ -28,22 +27,6 @@ const normalHandle = async function (req, res) {
     }
 }
 
-/**
- * When a error occurs in body-parser, it will goes into this handle.
- * 
- * @param {expressErr} err 
- * @param {expressRequest} req 
- * @param {expressResponse} res 
- * @param {nextMiddleware} next 
- */
-const errorHandle = function (err, req, res, next) {
-    errors.badRequest(res, 'Bad Request.');
-}
-
 module.exports = {
-    bodyParserMiddleware: bodyParser.json({
-        limit: '1kb'
-    }),
-    errorHandle: errorHandle,
     normalHandle: normalHandle
 };
