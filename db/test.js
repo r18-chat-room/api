@@ -12,9 +12,6 @@ const connection = require('./connection')
 // }, 1000)
 
 setTimeout(async () => {
-    const result = await model.Comment.findOne({
-        foodId: "req.body.foodId",
-        userId: "req.body.userId"
-    })
+    const result = await model.Tag.find()
     console.log(result)
 }, 2000)

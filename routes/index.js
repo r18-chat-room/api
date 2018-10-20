@@ -19,14 +19,21 @@ const bodyParserMiddleware = bodyParser.json({
 
 const init = function (app) {
     app.post('/v1/app/language/translate', require('./app/language/translate').multer,
-                                           require('./app/language/translate').handle)
+        require('./app/language/translate').handle)
     app.post('/v1/app/language/speech', bodyParserMiddleware,
-                                        require('./app/language/speech').normalHandle)
-
+        require('./app/language/speech').normalHandle)
     app.post('/v1/app/food/user/tag/get', bodyParserMiddleware,
-                                          require('./app/food/user/tag/get').handle)
+        require('./app/food/user/tag/get').handle)
+    app.post('/v1/app/food/user/favorite/get', bodyParserMiddleware,
+        require('./app/food/user/favorite/get').handle)
     app.post('/v1/app/food/comment/get', bodyParserMiddleware,
-                                          require('./app/food/comment/get').handle)
+        require('./app/food/comment/get').handle)
+    app.post('/v1/app/food/tag/random', bodyParserMiddleware,
+        require('./app/food/tag/random').handle)
+    app.post('/v1/app/food/user/comment/get', bodyParserMiddleware,
+        require('./app/food/user/comment/get').handle)
+    app.post('/v1/app/food/user/comment/delete', bodyParserMiddleware,
+        require('./app/food/user/comment/delete').handle)
     // app.use(errorHandle)
 }
 

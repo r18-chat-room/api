@@ -1,13 +1,20 @@
 const mongoose = require('mongoose')
 const { Schema } = mongoose
+const random = require('mongoose-simple-random')
+
+const tag = new Schema({
+    name: String
+})
+
+tag.plugin(random)
+
+const Tag = mongoose.model('Tag', tag)
 
 module.exports = {
-    Tag: mongoose.model('Tag', {
-        name: String
-    }),
+    Tag,
     Comment: mongoose.model('Comment', {
         userId: String,
-        foodId: { type: Schema.Types.ObjectId, ref: 'Food' },
+        food: { type: Schema.Types.ObjectId, ref: 'Food' },
         date: { type: Date, default: Date.now },
         rate: Number,
         detail: String,
