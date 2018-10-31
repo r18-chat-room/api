@@ -9,7 +9,7 @@ const getRandom = count => {
             if (err) {
                 reject(err)
             }
-            resolve(res.map(v => v.name))
+            resolve(res)
         })
     })
 }

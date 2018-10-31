@@ -37,6 +37,10 @@ const User = mongoose.model('User', user)
 const food = new Schema({
     name: String,
     img: String,
+    rating: {
+        type: Number,
+        default: 0,
+    },
     tags: [{ type: Schema.Types.ObjectId, ref: 'Tag' }],
     description: String
 })

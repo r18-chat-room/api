@@ -26,6 +26,8 @@ const init = function (app) {
         require('./app/food/user/tag/get').handle)
     app.post('/v1/app/food/user/favorite/get', bodyParserMiddleware,
         require('./app/food/user/favorite/get').handle)
+    app.post('/v1/app/food/user/tag/edit', bodyParserMiddleware,
+        require('./app/food/user/tag/edit').handle)
     app.post('/v1/app/food/comment/get', bodyParserMiddleware,
         require('./app/food/comment/get').handle)
     app.post('/v1/app/food/tag/random', bodyParserMiddleware,
