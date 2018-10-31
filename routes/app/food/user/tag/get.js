@@ -2,10 +2,12 @@ const bodyParser = require('body-parser')
 const { User } = require.main.require('./db/model')
 
 const handle = async (req, res) => {
-    const result = await User.find({
+    const result = await User.findOne({
         id: req.body.id
+    }).select('tag').deepPopulate('tag')
+    res.send({
+        tags: result.tag
     })
-    res.send(result)
 }
 
 module.exports = {

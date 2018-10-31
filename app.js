@@ -14,15 +14,17 @@ routes.init(app);
 
 // Log uncaught exceptions.
 process.on('uncaughtException', (err) => {
+  console.log('Uncaught Exception: ', err)
   logger.errorLogger.error('Uncaught Exception: ', err);
 })
 
 // Log unhandled rejections.
 process.on('unhandledRejection', (reason, p) => {
+  console.log('Unhandled Rejection at: ', p, 'reason: ', reason);
   logger.errorLogger.error('Unhandled Rejection at: ', p, 'reason: ', reason);
 })
 
-const server = app.listen(3000, function () {
+const server = app.listen(5000, function () {
   const host = server.address().address;
   const port = server.address().port;
 
