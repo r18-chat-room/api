@@ -26,6 +26,10 @@ const init = function (app) {
         require('./app/food/user/tag/get').handle)
     app.post('/v1/app/food/user/favorite/get', bodyParserMiddleware,
         require('./app/food/user/favorite/get').handle)
+    app.post('/v1/app/food/user/favorite/add', bodyParserMiddleware,
+        require('./app/food/user/favorite/add').handle)
+    app.post('/v1/app/food/user/favorite/delete', bodyParserMiddleware,
+        require('./app/food/user/favorite/delete').handle)
     app.post('/v1/app/food/user/tag/edit', bodyParserMiddleware,
         require('./app/food/user/tag/edit').handle)
     app.post('/v1/app/food/comment/get', bodyParserMiddleware,
@@ -34,6 +38,8 @@ const init = function (app) {
         require('./app/food/tag/random').handle)
     app.post('/v1/app/food/user/comment/get', bodyParserMiddleware,
         require('./app/food/user/comment/get').handle)
+    app.post('/v1/app/food/comment/add', bodyParserMiddleware,
+        require('./app/food/comment/add').handle)
     app.post('/v1/app/food/user/comment/delete', bodyParserMiddleware,
         require('./app/food/user/comment/delete').handle)
     // app.use(errorHandle)

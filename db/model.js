@@ -26,7 +26,7 @@ const Comment = mongoose.model('Comment', comment)
 
 const user = new Schema({
     id: String,
-    favorite: [{ type: Schema.Types.ObjectId, ref: 'Food' }],
+    favorite: [{ type: Schema.Types.ObjectId, ref: 'Food'}],
     tag: [{ type: Schema.Types.ObjectId, ref: 'Tag' }]
 })
 
