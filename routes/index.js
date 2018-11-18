@@ -43,6 +43,8 @@ const init = function (app) {
     app.post('/v1/app/food/user/comment/delete', bodyParserMiddleware,
         require('./app/food/user/comment/delete').handle)
     // app.use(errorHandle)
+    app.get('/v1/internel/food/get-all-info',
+        require('./internel/food/getAllInfo').handle)
 }
 
 module.exports = {
