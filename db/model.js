@@ -25,7 +25,7 @@ comment.plugin(deepPopulate)
 const Comment = mongoose.model('Comment', comment)
 
 const user = new Schema({
-    id: String,
+    id: { type: Schema.Types.String, unique: true },
     favorite: [{ type: Schema.Types.ObjectId, ref: 'Food'}],
     tag: [{ type: Schema.Types.ObjectId, ref: 'Tag' }]
 })

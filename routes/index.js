@@ -42,6 +42,8 @@ const init = function (app) {
         require('./app/food/comment/add').handle)
     app.post('/v1/app/food/user/comment/delete', bodyParserMiddleware,
         require('./app/food/user/comment/delete').handle)
+    app.post('/v1/app/food/recommend/user', bodyParserMiddleware,
+        require('./app/food/recommend/user').handle)
     // app.use(errorHandle)
     app.get('/v1/internel/food/get-all-info',
         require('./internel/food/getAllInfo').handle)

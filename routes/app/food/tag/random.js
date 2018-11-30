@@ -1,5 +1,6 @@
 const bodyParser = require('body-parser')
-const { Tag } = require.main.require('./db/model')
+const { Tag, User } = require.main.require('./db/model')
+const axios = require('axios')
 
 const getRandom = count => {
     return new Promise((resolve, reject) => {
@@ -15,6 +16,18 @@ const getRandom = count => {
 }
 
 const handle = async (req, res) => {
+    if (req.body.userId) {
+        const user = await User.findOrCreate({
+            where: {
+                id: req.body.userId
+            }
+        })
+        if (user[1]) {
+            await axios.post(global.ml.url + '/v1/backend/food/sync/user/add', {
+                id: req.body.userId
+            })
+        }
+    }
     const result = await getRandom(req.body.count)
     res.send(result)
 }

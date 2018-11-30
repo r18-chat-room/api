@@ -14,6 +14,10 @@ const handle = async (req, res) => {
         })
         user.favorite.remove(foodId)
         await user.save()
+        await axios.post(global.ml.url + '/v1/backend/food/sync/user/delelte-favorite', {
+            id: userId,
+            food: foodId
+        })
         res.send({
             success: true
         })

@@ -1,5 +1,6 @@
 const bodyParser = require('body-parser')
 const { User } = require.main.require('./db/model')
+const axios = require('axios')
 
 const handle = async (req, res) => {
     const tags = req.body.tag
@@ -13,6 +14,11 @@ const handle = async (req, res) => {
                 upsert: true,
                 new: true,
                 setDefaultsOnInsert: true
+            })
+            const tags = result.populate('tag.name')
+            await axios.post(global.ml.url + '/v1/backend/food/sync/user/edit-tag', {
+                id: req.body.id,
+                tags: tags.tag
             })
             res.send({
                 success: true

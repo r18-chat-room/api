@@ -1,5 +1,6 @@
 const bodyParser = require('body-parser')
 const { User } = require.main.require('./db/model')
+const axios = require('axios')
 
 const handle = async (req, res) => {
     const foodId = req.body.food
@@ -15,6 +16,10 @@ const handle = async (req, res) => {
             upsert: true,
             new: true,
             setDefaultsOnInsert: true
+        })
+        await axios.post(global.ml.url + '/v1/backend/food/sync/user/add-favorite', {
+            id: userId,
+            food: foodId
         })
         res.send({
             success: true

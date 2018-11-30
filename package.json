@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/r18-chat-room/api#readme",
   "dependencies": {
+    "axios": "^0.18.0",
     "baidu-aip-sdk": "^2.1.0",
     "body-parser": "^1.18.2",
     "express": "^4.16.2",

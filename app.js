@@ -3,6 +3,9 @@ const routes = require('./routes');
 const logger = require('./tools/log4js');
 const app = express();
 const connection = require('./db/connection');
+const ml = require('./configs/ml')
+
+global.ml = ml;
 
 // Use log4js.connetctLogger for request logging.
 app.use(logger.originalLog4js.connectLogger(logger.accessLogger, {

@@ -1,6 +1,7 @@
 const bodyParser = require('body-parser')
-const { Comment, Food } = require.main.require('./db/model')
+const { Comment, Food, Tag } = require.main.require('./db/model')
 const mongoose = require('mongoose')
+const axios = require('axios')
 
 const handle = async (req, res) => {
   const foodId = req.body.foodId
@@ -15,6 +16,22 @@ const handle = async (req, res) => {
       rate,
       detail
     })
+    const result = await axios.post(global.ml.url + '/v1/backend/food/sync/user/add-comment', {
+      "id": userId,
+      "food": foodId,
+      "rate": rate,
+      "detail": detail,
+      "commentId": comment._id
+    })
+    let tags = result.data.tag
+    tags = await Promise.all(tags.map(async v => {
+      let obj = JSON.parse(JSON.stringify(await Tag.findOne({
+        name: v
+      })))
+      return obj
+    }))
+    comment.tags = tags
+    comment.save()
     await comment.deepPopulate('food.tags')
     const rateCount = await Comment.aggregate([
       {
