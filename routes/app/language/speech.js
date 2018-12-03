@@ -20,7 +20,8 @@ const normalHandle = async function (req, res) {
                     pitchDelta: '0',
                     volumeDelta: '0',
                     text: req.body.text
-                }
+                },
+                responseType: 'arraybuffer'
             })
             res.set('Content-Type', 'audio/mpeg').send(result.data);
         } else {
