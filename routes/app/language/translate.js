@@ -79,7 +79,7 @@ const handle = async function (req, res) {
       } else {
         let aipOptions = {};
         switch (reqObj.to) {
-          case 'contonese':
+          case 'cantonese':
             aipOptions = {
               dev_pid: 1537
             }
