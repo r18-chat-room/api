@@ -98,8 +98,8 @@ const handle = async function (req, res) {
           const aipResult = await aipClient.recognize(req.file.buffer, 'amr', 16000, aipOptions);
           if (aipResult.err_no === 0) {
             const translateResult = await baiduTranslateHelper(aipResult.result[0],
-              aipOptions.lan === 'zh' ? 'zh' : 'yue',
-              aipOptions.lan === 'zh' ? 'yue' : 'zh');
+              aipOptions.dev_pid === 1537 ? 'zh' : 'yue',
+              aipOptions.dev_pid === 1537 ? 'yue' : 'zh');
             res.send({
               from: translateResult.trans_result[0].src,
               to: translateResult.trans_result[0].dst
