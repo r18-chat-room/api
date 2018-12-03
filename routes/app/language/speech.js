@@ -14,7 +14,7 @@ const normalHandle = async function (req, res) {
         if (req.body.type === 'cantonese') {
             const result = await axios.get('http://120.24.87.124/cgi-bin/ekho2.pl', {
                 params: {
-                    cmd: 'SAVEMP3',
+                    cmd: 'SAVEOGG',
                     voice: 'EkhoCantonese',
                     speedDelta: '0',
                     pitchDelta: '0',
