@@ -12,7 +12,7 @@ const normalHandle = async function (req, res) {
         return;
     } else {
         if (req.body.type === 'cantonese') {
-            const result = axios.get('http://120.24.87.124/cgi-bin/ekho2.pl', {
+            const result = await axios.get('http://120.24.87.124/cgi-bin/ekho2.pl', {
                 params: {
                     cmd: 'SPEAK',
                     voice: 'EkhoCantonese',
