@@ -1,5 +1,6 @@
 const bodyParser = require('body-parser')
 const error = require('../tools/errors')
+const proxy = require('express-http-proxy')
 
 /**
  * When a error occurs in body-parser, it will goes into this handle.
