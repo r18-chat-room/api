@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const { Schema } = mongoose
 const random = require('mongoose-simple-random')
+const findOrCreate = require('mongoose-findorcreate')
 const deepPopulate = require('mongoose-deep-populate')(mongoose);
 
 const tag = new Schema({
@@ -31,6 +32,7 @@ const user = new Schema({
 })
 
 user.plugin(deepPopulate)
+user.plugin(findOrCreate)
 
 const User = mongoose.model('User', user)
 

@@ -18,14 +18,20 @@ const getRandom = count => {
 const handle = async (req, res) => {
     if (req.body.userId) {
         const user = await User.findOrCreate({
-            where: {
                 id: req.body.userId
-            }
         })
-        if (user[1]) {
-            await axios.post(global.ml.url + '/v1/backend/food/sync/user/add', {
+        // const result = await User.findOneAndUpdate({
+        //     id: req.body.userId
+        // }, {}, {
+        //     upsert: true,
+        //     new: true,
+        //     setDefaultsOnInsert: true
+        // })
+        if (user.created) {
+            let result = await axios.post(global.ml.url + '/v1/backend/food/sync/user/add', {
                 id: req.body.userId
             })
+            console.log(result)
         }
     }
     const result = await getRandom(req.body.count)

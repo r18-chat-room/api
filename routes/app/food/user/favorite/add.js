@@ -17,10 +17,13 @@ const handle = async (req, res) => {
             new: true,
             setDefaultsOnInsert: true
         })
-        await axios.post(global.ml.url + '/v1/backend/food/sync/user/add-favorite', {
+        const data = {
             id: userId,
             food: foodId
-        })
+        }
+        console.log(data)
+        let result = await axios.post(global.ml.url + '/v1/backend/food/sync/user/add-favorite', data)
+        console.log(result)
         res.send({
             success: true
         })

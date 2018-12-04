@@ -15,11 +15,14 @@ const handle = async (req, res) => {
                 new: true,
                 setDefaultsOnInsert: true
             })
-            const tags = result.populate('tag.name')
-            await axios.post(global.ml.url + '/v1/backend/food/sync/user/edit-tag', {
+            const tagContent = await result.deepPopulate('tag.name')
+            const data = {
                 id: req.body.id,
-                tags: tags.tag
-            })
+                tags: JSON.parse(JSON.stringify(tagContent.tag))
+            }
+            console.log(data)
+            const mlResponse = await axios.post(global.ml.url + '/v1/backend/food/sync/user/edit-tag', data)
+            console.log(mlResponse.data)
             res.send({
                 success: true
             })

@@ -1224,6 +1224,11 @@ mongoose-deep-populate@^3.1.1:
   resolved "https://registry.yarnpkg.com/mongoose-deep-populate/-/mongoose-deep-populate-3.1.1.tgz#561f7e88566cdf0697559c9fe190d581c9038442"
   integrity sha1-Vh9+iFZs3waXVZyf4ZDVgckDhEI=
 
+mongoose-findorcreate@^3.0.0:
+  version "3.0.0"
+  resolved "http://registry.npm.taobao.org/mongoose-findorcreate/download/mongoose-findorcreate-3.0.0.tgz#490acf67c16061de74f7d1b92906538a62554a6d"
+  integrity sha1-SQrPZ8FgYd5099G5KQZTimJVSm0=
+
 mongoose-legacy-pluralize@1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/mongoose-legacy-pluralize/-/mongoose-legacy-pluralize-1.0.2.tgz#3ba9f91fa507b5186d399fb40854bff18fb563e4"

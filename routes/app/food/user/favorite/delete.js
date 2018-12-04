@@ -1,5 +1,6 @@
 const bodyParser = require('body-parser')
 const { User } = require.main.require('./db/model')
+const axios = require('axios')
 
 const handle = async (req, res) => {
     const foodId = req.body.food
@@ -14,10 +15,11 @@ const handle = async (req, res) => {
         })
         user.favorite.remove(foodId)
         await user.save()
-        await axios.post(global.ml.url + '/v1/backend/food/sync/user/delelte-favorite', {
+        let result = await axios.post(global.ml.url + '/v1/backend/food/sync/user/delelte-favorite', {
             id: userId,
             food: foodId
         })
+        console.log(result)
         res.send({
             success: true
         })
