@@ -5,7 +5,7 @@ const axios = require('axios')
 
 const handle = async (req, res) => {
   const foodId = req.body.foodId
-  const userId = req.body.id
+  const userId = req.body.userId
   const rate = req.body.rate
   const detail = req.body.detail
 
