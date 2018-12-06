@@ -21,7 +21,7 @@ const handle = async (req, res) => {
       "food": foodId,
       "rate": rate,
       "detail": detail,
-      "commentId": comment._id
+      "commentId": comment.id
     })
     let tags = result.data.tag
     tags = await Promise.all(tags.map(async v => {
@@ -50,6 +50,7 @@ const handle = async (req, res) => {
     }, {
         rating: rateCount[0].avgRate
       })
+    comment.food = food
     res.send({
       success: true,
       comment: comment
