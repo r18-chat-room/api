@@ -50,7 +50,7 @@ const handle = async (req, res) => {
     }, {
         rating: rateCount[0].avgRate
       })
-    food.deepPopulate('tags')
+    food.populate('tags')
     comment.food = food
     res.send({
       success: true,
