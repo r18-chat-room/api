@@ -32,7 +32,7 @@ const handle = async (req, res) => {
     }))
     comment.tags = tags
     comment.save()
-    await comment.deepPopulate('food.tags')
+    await comment.deepPopulate('tags')
     const rateCount = await Comment.aggregate([
       {
         "$match": {
@@ -50,6 +50,7 @@ const handle = async (req, res) => {
     }, {
         rating: rateCount[0].avgRate
       })
+    food.deepPopulate('tags')
     comment.food = food
     res.send({
       success: true,
