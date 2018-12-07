@@ -8,7 +8,7 @@ const handle = async (req, res) => {
             userId: req.body.userId
         }).deepPopulate('tags').deepPopulate("food.tags")
         let sortObj = ''
-        switch(req.body.order) {
+        switch (req.body.order) {
             case 'top': sortObj = 'rate'; break;
             case 'recently': sortObj = 'date'; break;
             case 'worst': sortObj = '-rate'; break;
@@ -18,12 +18,12 @@ const handle = async (req, res) => {
             food: req.body.foodId
         }).sort(sortObj).deepPopulate('tags').deepPopulate("food.tags")
         const result = {
-            myComment,
-            comments
+            myComment: JSON.parse(JSON.stringify(myComment)),
+            comments: JSON.parse(JSON.stringify(comments))
         }
         res.send(result)
     }
-    catch(e) {
+    catch (e) {
         res.send(e)
     }
 }
