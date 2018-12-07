@@ -19,7 +19,6 @@ const handle = async (req, res) => {
             id: userId,
             food: foodId
         })
-        console.log(result)
         res.send({
             success: true
         })
