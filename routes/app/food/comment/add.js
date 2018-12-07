@@ -48,10 +48,9 @@ const handle = async (req, res) => {
     const food = await Food.findOneAndUpdate({
       _id: foodId
     }, {
-        rating: rateCount[0].avgRate
-      })
-    food.populate('tags')
-    comment.food = food
+      rating: rateCount[0].avgRate
+    }).populate('tags')
+    comment.food = JSON.parse(JSON.stringify(food))
     res.send({
       success: true,
       comment: comment
