@@ -21,7 +21,8 @@ const handle = async (req, res) => {
             myComment: JSON.parse(JSON.stringify(myComment)),
             comments: JSON.parse(JSON.stringify(comments))
         }
-        console.log(comments, myComment)
+        console.log(result)
+        console.log(1)
         res.send(result)
     }
     catch (e) {
