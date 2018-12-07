@@ -39,20 +39,20 @@ const foods = [
 
 model.Food.insertMany(foods)
 
-const user = new model.User({
-    id: '1',
-    favorite: [foods[0]._id],
-    tag: [tags[0]._id]
-})
+// const user = new model.User({
+//     id: '1',
+//     favorite: [foods[0]._id],
+//     tag: [tags[0]._id]
+// })
 
-user.save()
+// user.save()
 
-const comment = new model.Comment({
-    userId: '1',
-    food: foods[0]._id,
-    rate: 4,
-    detail: '这是一条评论',
-    tags: [tags[0]._id]
-})
+// const comment = new model.Comment({
+//     userId: '1',
+//     food: foods[0]._id,
+//     rate: 4,
+//     detail: '这是一条评论',
+//     tags: [tags[0]._id]
+// })
 
-comment.save()
+// comment.save()
