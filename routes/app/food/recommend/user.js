@@ -15,18 +15,11 @@ const handle = async (req, res) => {
       _id: v
     }).populate('tags')))
     obj.want = false
-    // for (let i = 0; i < user.favorite.length; i++) {
-    //   if (user.favorite[i]._id === obj._id) {
-    //     obj.want = true
-    //     break;
-    //   }
-    // }
-    if (await user.favorite.findOne({
-      _id: obj._id
-    })) {
-      obj.want = true;
-    } else {
-      obj.want = false;
+    for (let i = 0; i < user.favorite.length; i++) {
+      if (user.favorite[i]._id === obj._id) {
+        obj.want = true
+        break;
+      }
     }
     if (await Comment.findOne({
       userId: req.body.id,
