@@ -14,12 +14,12 @@ const handle = async (req, res) => {
     let obj = JSON.parse(JSON.stringify(await Food.findOne({
       _id: v
     }).populate('tags')))
-    if (user.favorite.findOne({
-      _id: obj._id
-    })) {
-      obj.want = true
-    } else {
-      obj.want = false
+    obj.want = false
+    for (let i = 0; i < user.favorite.length; i++) {
+      if (user.favorite[i]._id === obj._id) {
+        obj.want = true
+        break;
+      }
     }
     if (Comment.findOne({
       userId: req.body.id,
