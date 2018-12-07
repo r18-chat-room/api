@@ -6,7 +6,7 @@ const handle = async (req, res) => {
         const myComment = await Comment.findOne({
             food: req.body.foodId,
             userId: req.body.userId
-        }).deepPopulate('tags').deepPopulate("food.tags")
+        }).populate('tags').deepPopulate("food.tags")
         let sortObj = ''
         switch (req.body.order) {
             case 'top': sortObj = 'rate'; break;
@@ -16,7 +16,7 @@ const handle = async (req, res) => {
         }
         const comments = await Comment.find({
             food: req.body.foodId
-        }).sort(sortObj).deepPopulate('tags').deepPopulate("food.tags")
+        }).sort(sortObj).populate('tags').deepPopulate("food.tags")
         const result = {
             myComment: JSON.parse(JSON.stringify(myComment)),
             comments: JSON.parse(JSON.stringify(comments))
@@ -26,6 +26,7 @@ const handle = async (req, res) => {
         res.send(result)
     }
     catch (e) {
+        console.log(e)
         res.send(e)
     }
 }
