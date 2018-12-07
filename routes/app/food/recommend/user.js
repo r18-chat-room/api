@@ -7,7 +7,7 @@ const handle = async (req, res) => {
     id: req.body.id
   }
   const user = User.findOne({
-    id: id
+    id: req.body.id
   }).populate('favorite')
   const result = await axios.post(global.ml.url + '/v1/backend/food/recommend/id', data)
   const foods = await Promise.all(result.data.foods.map(async v => {
@@ -22,7 +22,7 @@ const handle = async (req, res) => {
       obj.want = false
     }
     if (Comment.findOne({
-      userId: id,
+      userId: req.body.id,
       food: obj._id
     })) {
       obj.commented = true;
