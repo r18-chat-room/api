@@ -16,7 +16,7 @@ const handle = async (req, res) => {
         }
         const comments = await Comment.find({
             food: req.body.foodId
-        }).sort(sortObj).deepPopulate('tags')
+        }).sort(sortObj).deepPopulate('tags').deepPopulate("food.tags")
         const result = {
             myComment,
             comments
