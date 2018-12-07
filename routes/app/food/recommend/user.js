@@ -15,7 +15,7 @@ const handle = async (req, res) => {
     let obj = JSON.parse(JSON.stringify(await Food.findOne({
       _id: v
     }).populate('tags')))
-    obj.want = favorite.some(item => item._id === v)
+    obj.want = favorite.some(item => item._id == v)
     console.log(favorite, v)
     if (await Comment.findOne({
       userId: req.body.id,
