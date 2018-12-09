@@ -6,12 +6,12 @@ const { Food, User } = require('../../../db/model')
 const ml = require('../../../configs/ml')
 
 const upload = multer({
-  dest: 'uploads/'
+  dest: 'food-classifier/uploads'
 }).single('file')
 
 const handle = async function (req, res) {
-  const pathString = path.resolve(req.file.destination + req.file.filename)
-  const result = await axios.get(ml.url + '/food-classify/' + pathString)
+  // const pathString = path.resolve(req.file.destination + req.file.filename)
+  const result = await axios.get(ml.url + '/food-classify/uploads/' + req.file.filename)
   const food = await Food.findOne({
     name: result.data.category
   }).populate('tags')

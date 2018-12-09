@@ -4,3 +4,4 @@ logs/*
 debug/*
 uploads/*
 !.gitkeep
+food-classifier
